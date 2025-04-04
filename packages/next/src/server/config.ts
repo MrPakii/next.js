@@ -251,9 +251,9 @@ function assignDefaults(
       throw new CanaryOnlyError({ feature: 'experimental.ppr' })
     } else if (result.experimental?.dynamicIO) {
       throw new CanaryOnlyError({ feature: 'experimental.dynamicIO' })
-    } else if (result.experimental?.turbo?.unstablePersistentCaching) {
+    } else if (result.experimental?.turbopackPersistentCaching) {
       throw new CanaryOnlyError({
-        feature: 'experimental.turbo.unstablePersistentCaching',
+        feature: 'experimental.turbopackPersistentCaching',
       })
     } else if (result.experimental?.nodeMiddleware) {
       throw new CanaryOnlyError({ feature: 'experimental.nodeMiddleware' })
@@ -1281,6 +1281,11 @@ export default async function loadConfig(
       }
 
       userConfig.experimental.turbo.rules = rules
+    }
+
+    if (userConfig.experimental?.turbo?.unstablePersistentCaching != null) {
+      userConfig.experimental.turbopackPersistentCaching =
+        userConfig.experimental.turbo.unstablePersistentCaching
     }
 
     if (userConfig.experimental?.turbo) {
