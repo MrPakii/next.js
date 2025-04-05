@@ -122,7 +122,7 @@ For a full, detailed breakdown of each feature flag and its status, see the [Tur
 
 ## Configuration
 
-Turbopack can be configured via `next.config.js` (or `next.config.ts`) under the `experimental.turbo` key. Configuration options include:
+Turbopack can be configured via `next.config.js` (or `next.config.ts`) under the `turbopack` key. Configuration options include:
 
 - **`rules`**
   Define additional [webpack loaders](/docs/app/api-reference/config/next-config-js/turbo#configuring-webpack-loaders) for file transformations.
@@ -139,14 +139,12 @@ Turbopack can be configured via `next.config.js` (or `next.config.ts`) under the
 
 ```js filename="next.config.js"
 module.exports = {
-  experimental: {
-    turbo: {
-      // Example: adding an alias and custom file extension
-      resolveAlias: {
-        underscore: 'lodash',
-      },
-      resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.json'],
+  turbopack: {
+    // Example: adding an alias and custom file extension
+    resolveAlias: {
+      underscore: 'lodash',
     },
+    resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.json'],
   },
 }
 ```
