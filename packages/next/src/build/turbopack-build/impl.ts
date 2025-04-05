@@ -61,8 +61,7 @@ export async function turbopackBuild(): Promise<{
   const project = await bindings.turbo.createProject(
     {
       projectPath: dir,
-      rootPath:
-        config.experimental?.turbo?.root || config.outputFileTracingRoot || dir,
+      rootPath: config.turbopack?.root || config.outputFileTracingRoot || dir,
       distDir,
       nextConfig: config,
       jsConfig: await getTurbopackJsConfig(dir, config),
@@ -90,7 +89,7 @@ export async function turbopackBuild(): Promise<{
     },
     {
       persistentCaching,
-      memoryLimit: config.experimental.turbo?.memoryLimit,
+      memoryLimit: config.turbopack?.memoryLimit,
       dependencyTracking: persistentCaching,
     }
   )
